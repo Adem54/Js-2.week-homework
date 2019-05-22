@@ -162,6 +162,7 @@ vehicle1("cyan", 1, 0);
 // Cumleyi dilbigisine uygun olusturmaniz gerekiyor. Cogul kelimelerin sonuna 's' gelmesi, son kelime haric listedeki diger kelimelerin sonuna virgul, son kelimenin sonuna ise nokta gelmesi gibi..
 
 let vehicles1 = ["motorbike", "bike", "caravan", "limuzin", "jeep"];
+vehicles1 = ["motorbike", "bike", "caravan", "cooper", "limuzin", "jeep"]; //Buraya 11.soru için cooper diye bir araç ekledik koda hiç dokunmadan direk ekleme yapınca araç içerisinde göremiyoruz
 let reklam = []; //for döngüsü içerisinde dönen bir sonucu ancak dizi içine döndürebiliriz yoksa öbür türlü ancak en son alınan değeri görürüz
 let sonuc1;
 let sonuc2;
@@ -174,7 +175,9 @@ for (let i = 0; i < vehicles1.length; i++) {
 console.log("Amazing Joe's Garage, we service " + reklam);
 
 // 11-Eger vehicle listesine yeni bir arac eklerseniz 10. soruda olusturdugunuz koda dokunmadan ayni cumle yapisini loglayabilir misiniz?
+// İçerisine kendimiz  coooper diye bir araç türü ekliyoruz ama ekleme işlemini kodları yazdığımız kısmın üzerinde ekliyoruz ki  eklediğimiz dizi den sonra kod okusun ve sonuca yansısın
 
+console.log("Amazing Joe's Garage, we service " + reklam);
 // 12-Bos bir object olusturun.
 
 let myObject = {};
