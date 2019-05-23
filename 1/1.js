@@ -35,7 +35,8 @@ console.log("Dizinin uzunluğu: ", favoriteAnimals.length, "'tir.");
 //2.6 Yusuf, dizideki 'giraffe' sevmiyor, bunu diziden silin, cikarin.
 //2.7 Yeni olusan diziyi tekrar loglayin.
 
-favoriteAnimals.splice(3, 1); // 3.elemandan başla 1 eleman sil demiş oluyoruz
+let silinen=favoriteAnimals.splice(3, 1); // 3.elemandan başla 1 eleman sil demiş oluyoruz
+console.log(silinen);
 console.log(favoriteAnimals);
 
 // 2.8 Simdi ornegin 'meerkat' hayvanini sevmiyorsunuz ve diziden cikarmak istiyorsunuz. Fakat kacinci sirada oldugunu bilmiyorsunuz. Adini bildiginiz bu hayvani diziden nasil cikarirsiniz?
@@ -51,6 +52,7 @@ for (var i = 0; i < favoriteAnimals.length; i++) {
 //Tekrar ekliyorum 'meerkat' i dizimize eski yerine  ve bu yöntemle de tekrar meerketid di bulup siliyorum
 favoriteAnimals.splice(1, 0, "meerkat");
 console.log(favoriteAnimals);
+//Önce sırasını buluyoruz ondan sonra çıkarıyoruz
 var indis = favoriteAnimals.indexOf("meerkat");
 console.log(indis);
 favoriteAnimals.splice(1, 1);
@@ -293,7 +295,7 @@ console.log(_esitmi(array1, array2));
 //Bu atama sirasi (o3 = o2 or o2 = o3) onemli??????Buna bakalım
 
 let o1 = { foo: "bar" };
-let o2 = { foo: "bar" };
+let o2 = { foo: "bar","bike" };
 let o3 = o2;
 
 o2.foo = "bak";
