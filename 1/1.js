@@ -10,7 +10,10 @@ console.log(uzunluk);
 //1.3 Virguller cumlenin okunmasini zorlastiriyor. Virgullerin kaldirilip yerine nasil bosluk konur, arastirip cozmeye calisin.
 //1.4 Yukaridaki islemi yapabildiyseniz yeni myString degerinizi yazdirin.
 
-myString = myString.replace(/,/g, " ");
+let myOtherString = myString.split(",").join(" ");
+myOtherString;
+
+myString = myString.replace(/,/g, " "); // RegEx Regular Expression
 console.log(myString);
 
 //2.1 Varolan diziye Ali'nin favori hayvani 'turtle' ekleyecek bir kod yazin.
@@ -35,7 +38,7 @@ console.log("Dizinin uzunluğu: ", favoriteAnimals.length, "'tir.");
 //2.6 Yusuf, dizideki 'giraffe' sevmiyor, bunu diziden silin, cikarin.
 //2.7 Yeni olusan diziyi tekrar loglayin.
 
-let silinen=favoriteAnimals.splice(3, 1); // 3.elemandan başla 1 eleman sil demiş oluyoruz
+let silinen = favoriteAnimals.splice(3, 1); // 3.elemandan başla 1 eleman sil demiş oluyoruz
 console.log(silinen);
 console.log(favoriteAnimals);
 
@@ -43,9 +46,10 @@ console.log(favoriteAnimals);
 
 for (var i = 0; i < favoriteAnimals.length; i++) {
   const element = favoriteAnimals[i];
-  if (element === "meerkat") {
+  if (element === "capricorn") {
     favoriteAnimals.splice(i, 1);
     console.log(favoriteAnimals);
+    console.log(i);
   }
 }
 
@@ -139,8 +143,15 @@ function vehicle(color, code, age) {
     console.log("a ", color, " used car ");
   }
 }
+vehicle("green", 1, 0);
+//2.yöntem
+function altVehicle(color, code, age) {
+  let status = "";
+  age === 0 ? (status = "new") : (status = "used");
 
-vehicle("green", 2, 3);
+  if (code === 1) log("a " + status + " " + color + "car");
+  // log(`a ${status} ${color} car`)
+}
 
 //7-Bir arac listesi yapin. "motorbike", "caravan", "bike", veya daha fazla ekleyebilirsiniz.
 
@@ -150,15 +161,15 @@ console.log(vehicles[1]);
 
 // 9-  6.sorudaki vehicle fonksiyonunu degistirin. Fonksiyonda code yerine 7. sorudaki listeyinin indexlerini kullanin. Mesela vehicle("green", 3, 0) cagirdigimizda "a green new bike" loglasin.
 
-function vehicle1(color, code, age) {
+function vehicle1(color, index, age) {
   if (age === 0) {
-    console.log("a ", color, " new", vehicles[code]);
+    console.log("a ", color, " new", vehicles[index]);
   } else {
-    console.log("a ", color, " used", vehicles[code]);
+    console.log("a ", color, " used", vehicles[index]);
   }
 }
 
-vehicle1("cyan", 1, 0);
+vehicle1("cyan", 4, 0);
 
 // 10- Vehicle listesini kullanarak bir reklam cumlesi olusturun. Mesela soyle bir sey loglasin: "Amazing Joe's Garage, we service cars, motorbikes, caravans and bikes.". (Hint: use a for loop.)
 // Cumleyi dilbigisine uygun olusturmaniz gerekiyor. Cogul kelimelerin sonuna 's' gelmesi, son kelime haric listedeki diger kelimelerin sonuna virgul, son kelimenin sonuna ise nokta gelmesi gibi..
@@ -178,7 +189,7 @@ console.log("Amazing Joe's Garage, we service " + reklam);
 
 // 11-Eger vehicle listesine yeni bir arac eklerseniz 10. soruda olusturdugunuz koda dokunmadan ayni cumle yapisini loglayabilir misiniz?
 // İçerisine kendimiz  coooper diye bir araç türü ekliyoruz ama ekleme işlemini kodları yazdığımız kısmın üzerinde ekliyoruz ki  eklediğimiz dizi den sonra kod okusun ve sonuca yansısın
-
+//11-a  en sonuncu elemandan önce and olacak and den önceki virgül kaldırılacak ????????  ayrıca virgüllerden sonra boşluk bırakılmalı bu  yöntemde o olmuyor
 console.log("Amazing Joe's Garage, we service " + reklam);
 // 12-Bos bir object olusturun.
 
@@ -203,16 +214,45 @@ console.log(myTeamFriends);
 let x = [1, 2, 3];
 let y = [1, 2, 3];
 let z = y;
+function testedelim(arr1, arr2) {
+  if (arr1.length !== arr2.length) return false;
 
-if (x == y) {
-  console.log("x ye değer açısından eşittir");
-} else if (x === y) {
-  console.log("x ye ye hem değer hem veri türü açısından eşittir");
-} else if (z == x) {
-  console.log("z x e değer açısından eşittir");
-} else if (z == y) {
-  console.log("z y'ye ye değer açısından eşittir ");
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i] !== arr2[i]) return false;
+  }
+  return true;
 }
+console.log(testedelim(x, y));
+
+//Başka bir yöntemle karşılaştıralım
+//primitive bool string number
+//referans array object
+let xx = 10;
+let yy = xx;
+xx = 5;
+console.log(yy);
+
+xx = [1, 2, 3];
+yy = [1, 2, 3];
+zz = yy;
+zz[0] = 10;
+yy
+zz
+
+let yenidizi11 = [];
+function testedelim1(arr1, arr2) {
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1.length === arr2.length && arr1[i] === arr2[i]) {
+      let element = arr1[i] + " = " + arr2[i];
+      yenidizi11.push(element);
+    } else {
+      console.log("Bu dizilerin " + i + ". elemanı birbirine eşit değildir!");
+    }
+  }
+  console.log("Bu dizinin eşit olan elemanları bunlardır: " + yenidizi11);
+}
+
+testedelim1(x, y);
 
 //İlk aklımıza gelen şey (x == y) veya (x === y) karşılaştırması oluyor. Fakat bu kullanılabilir bir syntax değil. Bunun temel sebebi, x ve y'nin temsil ettiği verilerin bir tür yapıya sahip olmasıdır.
 
@@ -295,15 +335,43 @@ console.log(_esitmi(array1, array2));
 //Bu atama sirasi (o3 = o2 or o2 = o3) onemli??????Buna bakalım
 
 let o1 = { foo: "bar" };
-let o2 = { foo: "bar","bike" };
+let o2 = { foo: "bar" };
 let o3 = o2;
 
-o2.foo = "bak";
-o2.faa = "car";
-o1.foo = "bal";
-console.log(o2);
-console.log(o3);
-console.log(o1);
+Object.compare = function(obj1, obj2) {
+  //Loop through properties in object 1
+  for (var p in obj1) {
+    //Check property exists on both objects
+    if (obj1.hasOwnProperty(p) !== obj2.hasOwnProperty(p)) return false;
+
+    switch (typeof obj1[p]) {
+      //Deep compare objects
+      case "object":
+        if (!Object.compare(obj1[p], obj2[p])) return false;
+        break;
+      //Compare function code
+      case "function":
+        if (
+          typeof obj2[p] == "undefined" ||
+          (p != "compare" && obj1[p].toString() != obj2[p].toString())
+        )
+          return false;
+        break;
+      //Compare values
+      default:
+        if (obj1[p] != obj2[p]) return false;
+    }
+  }
+  //Check object 2 for any extra properties
+  for (var p in obj2) {
+    if (typeof obj1[p] == "undefined") return false;
+  }
+  return true;
+};
+
+console.log(Object.compare(o1, o2));
+console.log(Object.compare(o2, o3));
+console.log(Object.compare(o1, o3));
 
 // Asagidaki kod ne dondurur? (ve neden?)
 
